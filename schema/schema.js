@@ -103,7 +103,7 @@ const Mutation = new GraphQLObjectType({
           genre: args.genre,
           authorId: args.authorId,
         });
-        return book.save();
+        return book.save().then((book) => console.log(book));
       },
     },
   },
@@ -113,3 +113,4 @@ module.exports = new GraphQLSchema({
   query: RootQuery,
   mutation: Mutation,
 });
+``;
