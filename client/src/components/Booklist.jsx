@@ -1,23 +1,10 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import {  useQuery } from "@apollo/client";
+import {getBooksQuery} from "../graphql/queries"
 
-const getBooksQuery = gql`
-  query GetBooks {
-    books {
-      name
-      id
-      genre
-      author {
-        name
-        age
-      }
-    }
-  }
-`;
 
 function Booklist() {
   const { data, loading } = useQuery(getBooksQuery);
-  console.log(data);
   if (loading) return <h1>Loading...</h1>;
   return (
     <div>
@@ -29,6 +16,5 @@ function Booklist() {
     </div>
   );
 }
-Booklist.propTypes = {};
 
 export default Booklist;

@@ -5,14 +5,16 @@ const schema = require("./schema/schema");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-// Allow cross origin requests
-app.use(cors());
-
 // Database Connection
 mongoose
-  .connect("mongodb://localhost/Authors_App")
+  .connect(
+    "mongodb+srv://Yashkr00129:Yashkr00129@authorsandbooks.c01oh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  )
   .then(() => console.log("Connected to MongoDB.."))
-  .catch(() => console.log("Connection to MongoDB failed.."));
+  .catch((e) => console.log("Connection to MongoDB failed..", e.message));
+
+// Allow cross origin requests
+app.use(cors());
 
 // GraphQL Middleware
 app.use(
